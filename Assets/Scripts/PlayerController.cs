@@ -10,6 +10,10 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public float jumpForce;
 
+    public Transform groundPoint;
+    private bool isOnGround;
+    public LayerMask whatIsGround;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,5 +24,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         theRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, theRB.velocity.y);
+
+        isOnGround = Physics2D.OverlapCircle(groundPoint.position, .2f, whatIsGround);
+
+        if(Input.GetButtonDown("Jump") && isOnGround)
+        {
+            theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
+        }
     }
 }
