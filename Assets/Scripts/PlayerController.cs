@@ -16,6 +16,11 @@ public class PlayerController : MonoBehaviour
 
     public Animator anim;
 
+    public BulletController shotToFire;
+    public Transform shotPoint;
+     
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +54,11 @@ public class PlayerController : MonoBehaviour
             theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
         }
 
+
+        if(Input.GetButtonDown("Fire1"))
+        {
+            Instantiate(shotToFire, shotPoint.position, shotPoint.rotation).moveDir = new Vector2(transform.localScale.x, 0f);
+        }
 
 
         anim.SetBool("isOnGround", isOnGround);
