@@ -10,7 +10,7 @@ public class BulletController : MonoBehaviour
 
     public Vector2 moveDir;
 
-
+    public GameObject impactEffect;
 
     // Update is called once per frame
     void Update()
@@ -21,7 +21,10 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if (impactEffect != null)
+        {
+            Instantiate(impactEffect, transform.position, Quaternion.identity);
+        }
         Destroy(gameObject);
 
     }
