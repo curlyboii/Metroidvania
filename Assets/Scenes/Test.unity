@@ -2190,6 +2190,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shot Impact
       objectReference: {fileID: 0}
+    - target: {fileID: 8089556683009594295, guid: 01860bec3ca7ce54faffff38ec052e39, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9009085374055442227, guid: 01860bec3ca7ce54faffff38ec052e39, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -2290,6 +2294,10 @@ PrefabInstance:
     - target: {fileID: 8693793231578236537, guid: 603f967e1fc58394a9ce66754e8c587b, type: 3}
       propertyPath: m_Name
       value: PlayerShot
+      objectReference: {fileID: 0}
+    - target: {fileID: 8693793231578236537, guid: 603f967e1fc58394a9ce66754e8c587b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 603f967e1fc58394a9ce66754e8c587b, type: 3}
