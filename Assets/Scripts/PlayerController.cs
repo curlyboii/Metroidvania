@@ -24,6 +24,11 @@ public class PlayerController : MonoBehaviour
     public float dashSpeed, dashTime;
     private float dashCounter;
 
+    public SpriteRenderer theSR, afterImage;
+    public float afterImageLifeTime, timeBetweenAfterImages;
+    private float afterImageCounter; // how long we're waiting between each image
+    public Color afterImageColor;
+
 
      
 
@@ -43,6 +48,8 @@ public class PlayerController : MonoBehaviour
 
             dashCounter = dashTime;
 
+            ShowAfterImage();
+
         }
 
 
@@ -52,6 +59,14 @@ public class PlayerController : MonoBehaviour
             dashCounter = dashCounter - Time.deltaTime;
 
             theRB.velocity = new Vector2(dashSpeed * transform.localScale.x, theRB.velocity.y);
+
+            afterImageCounter -= Time.deltaTime;
+            if(afterImageCounter <= 0)
+            {
+
+                ShowAfterImage();
+
+            }
 
         }
         else
@@ -104,5 +119,20 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("isOnGround", isOnGround);
         anim.SetFloat("speed", Mathf.Abs(theRB.velocity.x));
     }
+
+
+    public void ShowAfterImage()
+    {
+
+      SpriteRenderer image = Instantiate(afterImage, transform.position, transform.rotation);
+        image.sprite = theSR.sprite;
+        image.transform.localScale = transform.localScale;
+        image.color = afterImageColor;
+
+        afterImageCounter = timeBetweenAfterImages;
+
+        Destroy(image.gameObject, afterImageLifeTime);
+    }    
+
 
 }
