@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     public Animator anim;
 
-    public BulletController shotToFire;
+    public BulletController shotToFire; 
     public Transform shotPoint;
 
     private bool canDoubleJump;
@@ -27,8 +27,11 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer theSR, afterImage;
     public float afterImageLifeTime, timeBetweenAfterImages;
     private float afterImageCounter; // how long we're waiting between each image
-    public Color afterImageColor;
+    public Color afterImageColor; // Sprite color while we dash
 
+    public float waitAfterDashing;
+    private float dashRechargeCounter;
+     
 
      
 
@@ -43,15 +46,24 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetButtonDown("Fire2"))
+        if (dashRechargeCounter > 0)
         {
 
-            dashCounter = dashTime;
-
-            ShowAfterImage();
+            dashRechargeCounter -= Time.deltaTime;
 
         }
+        else
+        {
 
+            if (Input.GetButtonDown("Fire2"))
+            {
+
+                dashCounter = dashTime;
+
+                ShowAfterImage();
+
+            }
+        }
 
         if (dashCounter > 0)
         {
@@ -67,6 +79,8 @@ public class PlayerController : MonoBehaviour
                 ShowAfterImage();
 
             }
+
+            dashRechargeCounter = waitAfterDashing;
 
         }
         else
