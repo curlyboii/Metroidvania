@@ -31,6 +31,10 @@ public class PlayerController : MonoBehaviour
 
     public float waitAfterDashing;
     private float dashRechargeCounter;
+
+    public GameObject standing, ball; // two modes
+    public float waitToBall; // how long it takes us to switch between those two modes
+    private float ballCounter;
      
 
      
@@ -55,7 +59,7 @@ public class PlayerController : MonoBehaviour
         else
         {
 
-            if (Input.GetButtonDown("Fire2"))
+            if (Input.GetButtonDown("Fire2") && standing.activeSelf) // standing.activeSelf - object currently active 
             {
 
                 dashCounter = dashTime;
@@ -122,6 +126,7 @@ public class PlayerController : MonoBehaviour
         }
 
 
+        // shooting
         if(Input.GetButtonDown("Fire1"))
         {
             Instantiate(shotToFire, shotPoint.position, shotPoint.rotation).moveDir = new Vector2(transform.localScale.x, 0f);
@@ -129,9 +134,50 @@ public class PlayerController : MonoBehaviour
             anim.SetTrigger("shotFired");
         }
 
+        //ball mode
+        if(!ball.activeSelf)
+        {
+
+            if (Input.GetAxisRaw("Vertical") < -0.9f)
+            {
+
+                ballCounter -= Time.deltaTime;
+                if(ballCounter <= 0)
+                {
+                    ball.SetActive(true);
+                    standing.SetActive(false); 
+                }
+
+            }else
+            {
+                ballCounter = waitToBall;
+            }
+
+        }
+        else
+        {
+            if (Input.GetAxisRaw("Vertical") > 0.9f)
+            {
+
+                ballCounter -= Time.deltaTime;
+                if (ballCounter <= 0)
+                {
+                    ball.SetActive(false);
+                    standing.SetActive(true);
+                }
+
+            }
+            else
+            {
+                ballCounter = waitToBall;
+            }
+
+
+        }
 
         anim.SetBool("isOnGround", isOnGround);
         anim.SetFloat("speed", Mathf.Abs(theRB.velocity.x));
+
     }
 
 
