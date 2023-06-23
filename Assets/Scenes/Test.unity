@@ -357,6 +357,7 @@ MonoBehaviour:
   standing: {fileID: 1428173042}
   ball: {fileID: 1298766434}
   waitToBall: 0.5
+  ballAnim: {fileID: 1298766438}
 --- !u!1 &1298766434
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,7 +376,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1298766435
 Transform:
   m_ObjectHideFlags: 0

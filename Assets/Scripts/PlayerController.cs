@@ -35,6 +35,9 @@ public class PlayerController : MonoBehaviour
     public GameObject standing, ball; // two modes
     public float waitToBall; // how long it takes us to switch between those two modes
     private float ballCounter;
+
+    public Animator ballAnim;
+
      
 
      
@@ -175,8 +178,18 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        anim.SetBool("isOnGround", isOnGround);
-        anim.SetFloat("speed", Mathf.Abs(theRB.velocity.x));
+
+        if (standing.activeSelf)
+        {
+            anim.SetBool("isOnGround", isOnGround);
+            anim.SetFloat("speed", Mathf.Abs(theRB.velocity.x));
+        }
+
+        if (ball.activeSelf)
+        {
+            ballAnim.SetFloat("speed", Mathf.Abs(theRB.velocity.x));
+            
+        }    
 
     }
 
