@@ -38,12 +38,11 @@ public class PlayerController : MonoBehaviour
 
     public Animator ballAnim;
 
-    public Transform bombPoint;
-    public GameObject bomb;
+    public BombManager bombManager; // Reference to the BombManager script
 
-     
 
-     
+
+
 
 
     // Start is called before the first frame update
@@ -143,8 +142,10 @@ public class PlayerController : MonoBehaviour
             }
             else if (ball.activeSelf)
             {
-                Instantiate(bomb, bombPoint.position, bombPoint.rotation);
-
+                if (bombManager != null) // Ensure the reference is assigned
+                {
+                    bombManager.SpawnBomb(); // Call the SpawnBomb() method from the BombManager
+                }
             }
         }
 

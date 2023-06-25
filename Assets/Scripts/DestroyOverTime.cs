@@ -12,8 +12,6 @@ public class DestroyOverTime : MonoBehaviour
     {
 
         Destroy(gameObject, lifetime);
-        
+       
     }
-
-
 }

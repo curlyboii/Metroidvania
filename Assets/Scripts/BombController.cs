@@ -6,12 +6,13 @@ public class BombController : MonoBehaviour
 {
     public float timeToExplode = .5f;
     public GameObject explosion;
+    private BombManager bombManager;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        bombManager = BombManager.Instance;
     }
 
     // Update is called once per frame
@@ -30,6 +31,7 @@ public class BombController : MonoBehaviour
             }
 
             Destroy(gameObject);
+            bombManager.DecreaseActiveBombCount();
 
         }
 
