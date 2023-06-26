@@ -40,6 +40,8 @@ public class PlayerController : MonoBehaviour
 
     public BombManager bombManager; // Reference to the BombManager script
 
+    private PlayerAbilityTracker abilities;
+
 
 
 
@@ -48,6 +50,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        abilities = GetComponent<PlayerAbilityTracker>();
         
     }
 
@@ -64,7 +68,7 @@ public class PlayerController : MonoBehaviour
         else
         {
 
-            if (Input.GetButtonDown("Fire2") && standing.activeSelf) // standing.activeSelf - object currently active 
+            if (Input.GetButtonDown("Fire2") && standing.activeSelf && abilities.canDash)  // standing.activeSelf - object currently active 
             {
 
                 dashCounter = dashTime;
@@ -114,7 +118,7 @@ public class PlayerController : MonoBehaviour
 
 
         //jumping
-        if(Input.GetButtonDown("Jump") && (isOnGround || canDoubleJump))
+        if(Input.GetButtonDown("Jump") && (isOnGround || (canDoubleJump && abilities.canDoubleJump)))
         {
             if (isOnGround)
             {
@@ -140,7 +144,7 @@ public class PlayerController : MonoBehaviour
 
                 anim.SetTrigger("shotFired");
             }
-            else if (ball.activeSelf)
+            else if (ball.activeSelf && abilities.canDropBomb)
             {
                 if (bombManager != null) // Ensure the reference is assigned
                 {
@@ -153,7 +157,7 @@ public class PlayerController : MonoBehaviour
         if(!ball.activeSelf)
         {
 
-            if (Input.GetAxisRaw("Vertical") < -0.9f)
+            if (Input.GetAxisRaw("Vertical") < -0.9f && abilities.canBecomeBall)
             {
 
                 ballCounter -= Time.deltaTime;

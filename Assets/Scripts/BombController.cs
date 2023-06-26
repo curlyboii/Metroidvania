@@ -39,7 +39,9 @@ public class BombController : MonoBehaviour
             Destroy(gameObject);
             bombManager.DecreaseActiveBombCount();
 
-          Collider2D[] objectsToRemove = Physics2D.OverlapCircleAll(transform.position, blastRange, whatIsDestructible);
+            // find all colliders within a circular area centered at the bomb's position
+            Collider2D[] objectsToRemove = Physics2D.OverlapCircleAll(transform.position, blastRange, whatIsDestructible);
+            //code block checks if there are any destructible objects (Collider2D objects) in the objectsToRemove array
             if (objectsToRemove.Length > 0)
             {
 
