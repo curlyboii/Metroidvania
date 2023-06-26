@@ -122,6 +122,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToExplode: 2
   explosion: {fileID: 4027116363440844656, guid: b26dfff4a990de441a1ad21d49b832ef, type: 3}
+  blastRange: 1.5
+  whatIsDestructible:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!50 &-3019828198523259706
 Rigidbody2D:
   serializedVersion: 4
