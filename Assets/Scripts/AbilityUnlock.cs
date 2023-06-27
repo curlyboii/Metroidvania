@@ -7,6 +7,8 @@ public class AbilityUnlock : MonoBehaviour
 
     public bool unlockDoubleJump, unlockDash, unlockBecomeBall, unlockDropBomb;
 
+    public GameObject pickupEffect;
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -40,7 +42,9 @@ public class AbilityUnlock : MonoBehaviour
 
             }
 
+            Instantiate(pickupEffect, transform.position, transform.rotation);
             Destroy(gameObject);
+            
         }
 
     }

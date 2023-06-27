@@ -139,3 +139,4 @@ MonoBehaviour:
   unlockDash: 0
   unlockBecomeBall: 0
   unlockDropBomb: 0
+  pickupEffect: {fileID: 7066307611745583514, guid: 5418353aef83039489b4d21226f74e67, type: 3}
