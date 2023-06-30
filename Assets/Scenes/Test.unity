@@ -250,6 +250,7 @@ MonoBehaviour:
   waitAtPoints: 1
   jumpForce: 10
   theRB: {fileID: 324340583}
+  anim: {fileID: 580772192}
 --- !u!1001 &375707222
 PrefabInstance:
   m_ObjectHideFlags: 0
