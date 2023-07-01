@@ -123,6 +123,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &113683127
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 113683128}
+  m_Layer: 0
+  m_Name: Patrol Points3
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &113683128
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113683127}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 19.28, y: -2.64, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 324340582}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &309252281
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,9 +197,10 @@ GameObject:
   - component: {fileID: 324340584}
   - component: {fileID: 324340583}
   - component: {fileID: 324340585}
+  - component: {fileID: 324340586}
   m_Layer: 0
   m_Name: Enemy_Walker
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -189,6 +221,7 @@ Transform:
   - {fileID: 1945476620}
   - {fileID: 1225736217}
   - {fileID: 309252282}
+  - {fileID: 113683128}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -245,12 +278,27 @@ MonoBehaviour:
   - {fileID: 1945476620}
   - {fileID: 1225736217}
   - {fileID: 309252282}
+  - {fileID: 113683128}
   - {fileID: 1225736217}
   moveSpeed: 5
   waitAtPoints: 1
   jumpForce: 10
   theRB: {fileID: 324340583}
   anim: {fileID: 580772192}
+--- !u!114 &324340586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324340581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e803155d9734c243aff4a09635e255a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalHealth: 3
+  deathEffect: {fileID: 649392842184183336, guid: 0ac9d2f860458f448921e8cf9e1da693, type: 3}
 --- !u!1001 &375707222
 PrefabInstance:
   m_ObjectHideFlags: 0
