@@ -21,6 +21,7 @@ public class PlayerHealthController : MonoBehaviour
 
         currentHealt = maxHealth;
 
+        UIController.Instance.UpdateHealth(currentHealt,maxHealth);
     }
 
     void Update()
@@ -41,5 +42,6 @@ public class PlayerHealthController : MonoBehaviour
             gameObject.SetActive(false);
         }
 
+        UIController.Instance.UpdateHealth(currentHealt, maxHealth);
     }
 }
