@@ -16,6 +16,16 @@ public class PlayerHealthController : MonoBehaviour
 
     public int maxHealth;
 
+    public float invincibilityLenght;
+    private float invincibilityCounter;
+
+    public float flashLenght;
+    private float flashCounter;
+
+    public SpriteRenderer[] playerSprites;
+
+
+
     void Start()
     {
 
@@ -26,22 +36,36 @@ public class PlayerHealthController : MonoBehaviour
 
     void Update()
     {
+        if(invincibilityCounter > 0)
+        {
+            invincibilityCounter -= Time.deltaTime;
+
+
+        }
         
     }
 
 
     public void DamagePlayer(int damageAmount)
     {
-
-        currentHealt -= damageAmount;
-
-        if(currentHealt <= 0)
+        if (invincibilityCounter <= 0)
         {
-            currentHealt = 0;
 
-            gameObject.SetActive(false);
+            currentHealt -= damageAmount;
+
+            if (currentHealt <= 0)
+            {
+                currentHealt = 0;
+
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                invincibilityCounter = invincibilityLenght;
+
+            }
+
+            UIController.Instance.UpdateHealth(currentHealt, maxHealth);
         }
-
-        UIController.Instance.UpdateHealth(currentHealt, maxHealth);
     }
 }
