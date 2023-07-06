@@ -1268,7 +1268,7 @@ MonoBehaviour:
   currentHealt: 0
   maxHealth: 10
   invincibilityLenght: 1.5
-  flashLenght: 0
+  flashLenght: 0.1
   playerSprites:
   - {fileID: 1428173045}
   - {fileID: 1298766437}

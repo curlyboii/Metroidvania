@@ -40,6 +40,26 @@ public class PlayerHealthController : MonoBehaviour
         {
             invincibilityCounter -= Time.deltaTime;
 
+            flashCounter-= Time.deltaTime;
+
+            if(flashCounter <= 0)
+            {
+                foreach(SpriteRenderer sr in playerSprites)
+                {
+                    sr.enabled = !sr.enabled;
+                }
+
+                flashCounter = flashLenght;
+
+            }
+
+            if(invincibilityCounter <= 0)
+            {
+                foreach (SpriteRenderer sr in playerSprites)
+                {
+                    sr.enabled = true;
+                }
+            }
 
         }
         
