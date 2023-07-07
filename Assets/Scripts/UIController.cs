@@ -6,11 +6,19 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
 
-    public static UIController Instance;
+    public static UIController instance;
 
     private void Awake()
     {
-        Instance = this;
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public Slider healthSlider;

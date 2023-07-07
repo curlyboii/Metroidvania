@@ -9060,7 +9060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d75b05a18432ff0489bb0c67533ba540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 3
+  damageAmount: 10
   destroyOnDamage: 1
   destroyEffect: {fileID: 4027116363440844656, guid: b26dfff4a990de441a1ad21d49b832ef, type: 3}
 --- !u!50 &1405347758
