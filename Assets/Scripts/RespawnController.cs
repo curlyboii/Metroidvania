@@ -43,6 +43,13 @@ public class RespawnController : MonoBehaviour
         
     }
 
+    public void SetSpawn(Vector3 newPosition)
+    {
+
+        respawnPoint = newPosition;
+
+    }
+
     public void Respawn()
     {
         StartCoroutine(RespawnCo());
