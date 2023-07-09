@@ -11,6 +11,7 @@ public class DoorController : MonoBehaviour
 
     private PlayerController thePlayer;
 
+    private bool playerExiting;
 
     // Start is called before the first frame update
     void Start()
@@ -37,5 +38,29 @@ public class DoorController : MonoBehaviour
 
         }
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "Player")
+        {
+            if(!playerExiting)
+            {
+                thePlayer.canMove = false;
+
+                StartCoroutine(UseDoorCo());
+
+            }
+
+
+        }
+
+    }
+
+    IEnumerator UseDoorCo()
+    {
+
+        yield return new WaitForSeconds(1.5f);
+
     }
 }
