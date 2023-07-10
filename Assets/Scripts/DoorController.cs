@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DoorController : MonoBehaviour
 {
@@ -13,6 +14,11 @@ public class DoorController : MonoBehaviour
 
     private bool playerExiting;
 
+    public Transform exitPoint;
+    public float movePlayerSpeed;
+
+    public string levelToLoad;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,8 +30,7 @@ public class DoorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if(Vector3.Distance(transform.position, thePlayer.transform.position) < distanceToOpen)
+        if (Vector3.Distance(transform.position, thePlayer.transform.position) < distanceToOpen)
         {
 
             anim.SetBool("doorOpen", true);
@@ -33,34 +38,43 @@ public class DoorController : MonoBehaviour
         }
         else
         {
-
             anim.SetBool("doorOpen", false);
-
         }
-        
+
+        if(playerExiting)
+        {
+            thePlayer.transform.position = Vector3.MoveTowards(thePlayer.transform.position, exitPoint.position, movePlayerSpeed * Time.deltaTime);
+        }
     }
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
-            if(!playerExiting)
+            if (!playerExiting)
             {
                 thePlayer.canMove = false;
 
                 StartCoroutine(UseDoorCo());
-
             }
-
-
         }
-
     }
 
     IEnumerator UseDoorCo()
     {
+        playerExiting = true;
 
-        yield return new WaitForSeconds(1.5f);
+        thePlayer.anim.enabled = false;
 
+        yield return new WaitForSeconds(1f);
+
+        RespawnController.instance.SetSpawn(exitPoint.position);
+
+        thePlayer.canMove = true;
+
+        thePlayer.anim.enabled = true;
+
+        SceneManager.LoadScene(levelToLoad);
     }
 }
