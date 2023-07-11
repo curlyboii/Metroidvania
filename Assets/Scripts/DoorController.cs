@@ -67,6 +67,8 @@ public class DoorController : MonoBehaviour
 
         thePlayer.anim.enabled = false;
 
+        UIController.instance.StartFadeToBlack();
+
         yield return new WaitForSeconds(1f);
 
         RespawnController.instance.SetSpawn(exitPoint.position);
@@ -74,6 +76,8 @@ public class DoorController : MonoBehaviour
         thePlayer.canMove = true;
 
         thePlayer.anim.enabled = true;
+
+        UIController.instance.StartFadeFromBlack();
 
         SceneManager.LoadScene(levelToLoad);
     }
